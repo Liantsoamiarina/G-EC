@@ -110,6 +110,17 @@
                     @enderror
                 </div>
 
+                {{-- Added: Mother's Place of Residence --}}
+                <div>
+                    <label for="mother_lieu_residence" class="block text-sm font-medium text-gray-700">Lieu de résidence habituel <span class="text-red-500">*</span></label>
+                    <input type="text" id="mother_lieu_residence" name="mother_lieu_residence" required
+                           class="w-full border rounded px-3 py-2 @error('mother_lieu_residence') border-red-500 @enderror"
+                           value="{{ old('mother_lieu_residence') }}">
+                    @error('mother_lieu_residence')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <div>
                     <label for="mother_profession" class="block text-sm font-medium text-gray-700">Profession <span class="text-red-500">*</span></label>
                     <input type="text" id="mother_profession" name="mother_profession" required
@@ -136,6 +147,7 @@
     Continuer
   </a>
 </div>
+                </div>
             </form>
         </div>
     </div>

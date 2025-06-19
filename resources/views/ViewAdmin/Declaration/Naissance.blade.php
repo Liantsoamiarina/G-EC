@@ -22,6 +22,15 @@
   </h1>
     </div>
 
+    <div class="mb-6 flex items-center space-x-2">
+      <a href="#" onclick="history.back()" class="text-blue-600 hover:underline flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Retour
+      </a>
+    </div>
+
     <!-- Formulaire -->
     <div class="bg-white rounded border shadow p-6">
       <h2 class="text-lg font-bold text-gray-800 mb-4">Détails de l'enfant</h2>
