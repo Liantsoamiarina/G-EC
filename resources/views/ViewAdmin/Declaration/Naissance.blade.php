@@ -8,6 +8,7 @@
 @extends('App')
 
 @section('body')
+
 <main class="flex-1 bg-gray-100 min-h-screen p-6">
   <div class="max-w-4xl mx-auto">
 

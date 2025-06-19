@@ -33,5 +33,13 @@ class AdminController extends Controller
     {
         return view("ViewAdmin.Declaration.Declarant",['pageTitle' => 'Informations du déclarant']);
     }
+    public function motherDetail()
+    {
+        return view("ViewAdmin.Declaration.DetailMere",['pageTitle'=> 'Informations de la mère']);
+    }
+    public function fatherDetail()
+    {
+        return view("ViewAdmin.Declaration.DetailPere",['pageTitle'=> 'Informations du père']);
+    }
 
 }
