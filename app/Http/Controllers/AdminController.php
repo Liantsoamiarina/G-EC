@@ -24,4 +24,14 @@ class AdminController extends Controller
     {
         return view('ViewAdmin.HistoryAdmin',['pageTitle' => 'Historique des actes']);
     }
+    //Déclaration de naissane
+    public function enfant()
+    {
+        return view('ViewAdmin.Declaration.Naissance',['pageTitle' => 'Enregistrement de naissance']);
+    }
+    public function showdeclarant()
+    {
+        return view("ViewAdmin.Declaration.Declarant",['pageTitle' => 'Informations du déclarant']);
+    }
+
 }

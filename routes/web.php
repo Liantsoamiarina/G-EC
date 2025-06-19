@@ -10,6 +10,9 @@ Route::get("/",[AdminController::class, "index"])->name('admin.dashboard');
 Route::get("/gestion",[AdminController::class, "gestion"])->name('admin.gestion');
 Route::get("/agent",[AdminController::class, "agent"])->name('admin.agent');
 Route::get("/historique",[Admincontroller::class, "history"])->name('admin.history');
+Route::get("/enfant",[AdminController::class,"enfant"])->name('admin.declaration');
+Route::get("/declarant",[AdminController::class,"showdeclarant"])->name('declarant');
+
 
 //Route pour les utilisateurs
 Route::get("/admin/register", [UserController::class, "index"]);

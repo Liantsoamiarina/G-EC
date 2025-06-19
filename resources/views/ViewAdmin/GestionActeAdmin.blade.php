@@ -12,7 +12,7 @@
 
 
 <!-- Conteneur flex pour aligner à droite -->
-<div class="flex justify-end mb-4" sta="{ open: false }">
+<div class="flex justify-end mb-4" x-data="{ open: false }">
   <!-- Bouton -->
   <button
     @click="open = true"
@@ -40,9 +40,9 @@
       <h2 class="text-xl font-semibold text-gray-800 text-center">Quel type d’acte souhaitez-vous ajouter ?</h2>
 
       <div class="grid grid-cols-1 gap-3">
-        <a href="/ajout/naissance" class="block text-center px-4 py-2 rounded bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium transition">Naissance</a>
-        <a href="/ajout/mariage" class="block text-center px-4 py-2 rounded bg-pink-100 hover:bg-pink-200 text-pink-800 font-medium transition">Mariage</a>
-        <a href="/ajout/deces" class="block text-center px-4 py-2 rounded bg-red-100 hover:bg-red-200 text-red-800 font-medium transition">Décès</a>
+        <a href="{{ route("admin.declaration") }}" class="block text-center px-4 py-2 rounded bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium transition">Naissance</a>
+        {{-- <a href="/ajout/mariage" class="block text-center px-4 py-2 rounded bg-pink-100 hover:bg-pink-200 text-pink-800 font-medium transition">Mariage</a>
+        <a href="/ajout/deces" class="block text-center px-4 py-2 rounded bg-red-100 hover:bg-red-200 text-red-800 font-medium transition">Décès</a> --}}
       </div>
 
       <div class="text-center">
