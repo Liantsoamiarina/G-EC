@@ -12,7 +12,7 @@
 
 
 <!-- Conteneur flex pour aligner à droite -->
-<div class="flex justify-end mb-4" x-data="{ open: false }">
+<div class="flex justify-end mb-4" sta="{ open: false }">
   <!-- Bouton -->
   <button
     @click="open = true"
