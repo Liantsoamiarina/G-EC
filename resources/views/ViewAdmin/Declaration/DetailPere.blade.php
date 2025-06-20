@@ -178,7 +178,6 @@
                         <select id="father_etat_civil" name="father_etat_civil"
                                 class="w-full border rounded px-3 py-2 @error('father_etat_civil') border-red-500 @enderror"
                                 x-bind:required="!fatherNotAvailable">
-                            <option value="">Sélectionner...</option>
                             <option value="Célibataire" {{ old('father_etat_civil') == 'Célibataire' ? 'selected' : '' }}>Célibataire</option>
                             <option value="Marié(e)" {{ old('father_etat_civil') == 'Marié(e)' ? 'selected' : '' }}>Marié(e)</option>
                             <option value="Divorcé(e)" {{ old('father_etat_civil') == 'Divorcé(e)' ? 'selected' : '' }}>Divorcé(e)</option>
