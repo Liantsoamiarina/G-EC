@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('naissances', function (Blueprint $table) {
             $table->id();
-
             //detail de l'enfant
             $table->string('nom_enfant');
             $table->string('prenom_enfant');
@@ -31,7 +30,6 @@ return new class extends Migration
             $table->string('lien_declarant');
             $table->string('preciser_lien')->nullable(); // Préciser le lien si autre
             $table->string('numero')->nullable(); // Numéro de téléphone du déclarant
-            $table->string('nom_declarant');
             $table->string('nom_declarant');
             $table->string('prenom_declarant');
             $table->date('date_naissance_declarant');
@@ -54,6 +52,7 @@ return new class extends Migration
             $table->string('commune_mere'); // Commune de résidence de la mère
             $table->string('fokontany_mere'); // Fokontany de résidence de la mère
             $table->string('profession_mere');
+            $table->string('etat_civil_mere')->nullable(); // État civil de la mère (mariée, célibataire, etc.)
             $table->string('numero_mere')->nullable(); // Numéro de téléphone de la mère
 
             //datail du père
@@ -65,16 +64,13 @@ return new class extends Migration
             // Résidence du père
             $table->boolean('pere_meme_residence_mere')->default(true); // true = même que la mère
            // Champs à remplir uniquement si "Non"
-            $table->string('pere_pays_residence')->nullable();
-            $table->string('pere_district_residence')->nullable();
-            $table->string('pere_commune_residence')->nullable();
-            $table->string('pere_fokontany_residence')->nullable();
-
-
-
-
-
-
+            $table->string('pere_pays_residence');
+            $table->string('pere_district_residence');
+            $table->string('pere_commune_residence');
+            $table->string('pere_fokontany_residence');
+            $table->string('profession_pere'); // Profession du père
+            $table->string('etat_civil_pere'); // État civil du père (marié, célibataire, etc.)
+            $table->string('numero_pere')->nullable(); // Numéro de téléphone du père
 
 
             $table->timestamps();
