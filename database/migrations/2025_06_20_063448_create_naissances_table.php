@@ -28,8 +28,8 @@ return new class extends Migration
 
             //detail du déclarant
             $table->string('lien_declarant');
-            $table->string('preciser_lien')->nullable(); // Préciser le lien si autre
             $table->string('numero')->nullable(); // Numéro de téléphone du déclarant
+            $table->string('preciser_lien')->nullable(); // Préciser le lien si autre
             $table->string('nom_declarant');
             $table->string('prenom_declarant');
             $table->date('date_naissance_declarant');
@@ -71,8 +71,6 @@ return new class extends Migration
             $table->string('profession_pere'); // Profession du père
             $table->string('etat_civil_pere'); // État civil du père (marié, célibataire, etc.)
             $table->string('numero_pere')->nullable(); // Numéro de téléphone du père
-
-
             $table->timestamps();
         });
     }
