@@ -19,7 +19,8 @@ class NaissanceForm extends Component
     public $lieu_accouchement;
     public $numero_enregistrement;
     public $date_dressage;
-    public $heure_dressage;
+    public $heure_dressage_heure;
+    public $heure_dressage_minute;
 
     // Déclarant
     public $lien_declarant;
@@ -86,8 +87,9 @@ class NaissanceForm extends Component
                 'poids_naissance' => 'required|numeric',
                 'lieu_accouchement' => 'required',
                 'numero_enregistrement' => 'required|unique:naissances,numero_enregistrement',
-                'date_dressage' => 'required|date',
-                'heure_dressage' => 'required',
+                'date_dressage' => 'nullable|date',
+                'heure_dressage_heure' => 'nullable|integer|min:0|max:23',
+                'heure_dressage_minute' => 'nullable|integer|min:0|max:59',
             ]);
         }
         if($this->step == 2){
@@ -160,7 +162,9 @@ class NaissanceForm extends Component
                 'lieu_accouchement' => 'required',
                 'numero_enregistrement' => 'required|unique:naissances,numero_enregistrement',
                 'date_dressage' => 'required|date',
-                'heure_dressage' => 'required',
+                'heure_dressage_heure' => 'nullable|integer|min:0|max:23',
+                'heure_dressage_minute'=> 'nullable|integer|min:0|max:59',
+
 
                 // Étape 2
                 'lien_declarant' => 'required',
@@ -208,6 +212,7 @@ class NaissanceForm extends Component
         ]);
 
             $heure_naissance = sprintf('%02d:%02d:00', $this->heure_naissance_heure, $this->heure_naissance_minute);
+            $heure_dressage = sprintf('%02d:%02d:00', $this->heure_dressage_heure ?? 0, $this->heure_dressage_minute ?? 0);
 
             Naissance::create([
                 'nom_enfant' => $this->nom_enfant,
@@ -219,7 +224,7 @@ class NaissanceForm extends Component
                 'lieu_accouchement' => $this->lieu_accouchement,
                 'numero_enregistrement' => $this->numero_enregistrement,
                 'date_dressage' => $this->date_dressage,
-                'heure_dressage' => $this->heure_dressage,
+                'heure_dressage' => $heure_dressage,
 
                 // Déclarant
                 'lien_declarant' => $this->lien_declarant,
