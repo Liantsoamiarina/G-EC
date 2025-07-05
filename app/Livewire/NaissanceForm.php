@@ -13,14 +13,12 @@ class NaissanceForm extends Component
     public $prenom_enfant;
     public $sexe;
     public $date_naissance;
-    public $heure_naissance_heure;
-    public $heure_naissance_minute;
+    public $heure_naissance;
     public $poids_naissance;
     public $lieu_accouchement;
     public $numero_enregistrement;
     public $date_dressage;
-    public $heure_dressage_heure;
-    public $heure_dressage_minute;
+    public $heure_dressage;
 
     // Déclarant
     public $lien_declarant;
@@ -82,23 +80,21 @@ class NaissanceForm extends Component
                 'prenom_enfant' => 'nullable|string',
                 'sexe' => 'required',
                 'date_naissance' => 'required|date',
-                'heure_naissance_heure' => 'required|integer|min:0|max:23',
-                'heure_naissance_minute' => 'required|integer|min:0|max:59',
-                'poids_naissance' => 'required|numeric',
+                'heure_naissance' => 'required',
+                'poids_naissance' => 'nullable',
                 'lieu_accouchement' => 'required',
-                'numero_enregistrement' => 'required|unique:naissances,numero_enregistrement',
-                'date_dressage' => 'nullable|date',
-                'heure_dressage_heure' => 'nullable|integer|min:0|max:23',
-                'heure_dressage_minute' => 'nullable|integer|min:0|max:59',
+                'numero_enregistrement' => 'required',
+                'date_dressage' => 'nullable',
+                'heure_dressage' => 'nullable',
             ]);
         }
         if($this->step == 2){
             $this->validate([
                 'lien_declarant' => 'required',
                 'preciser_lien' => 'nullable|string',
-                'numero' => 'required|numeric',
+                'numero' => 'required|string',
                 'nom_declarant' => 'required|string',
-                'prenom_declarant' => 'required|string',
+                'prenom_declarant' => 'nullable|string',
                 'date_naissance_declarant' => 'required|date',
                 'nationalite_declarant' => 'required|string',
                 'lieu_naissance_declarant' => 'required|string',
@@ -122,7 +118,7 @@ class NaissanceForm extends Component
                 'fokontany_mere' => 'required|string',
                 'profession_mere' => 'required|string',
                 'etat_civil_mere' => 'required|string',
-                'numero_mere' => 'required|numeric',
+                'numero_mere' => 'required|string',
             ]);
         }
         if($this->step == 4){
@@ -139,9 +135,10 @@ class NaissanceForm extends Component
                 'pere_fokontany_residence' => 'required_if:pere_meme_residence_mere,false|string',
                 'profession_pere' => 'required|string',
                 'etat_civil_pere' => 'required|string',
-                'numero_pere' => 'required|numeric',
+                'numero_pere' => 'required|string',
             ]);
         }
+
         $this->step++;
     }
         public function previousStep(){
@@ -156,20 +153,19 @@ class NaissanceForm extends Component
                 'prenom_enfant' => 'nullable|string',
                 'sexe' => 'required',
                 'date_naissance' => 'required|date',
-                'heure_naissance_heure' => 'required|integer|min:0|max:23',
-                'heure_naissance_minute' => 'required|integer|min:0|max:59',
-                'poids_naissance' => 'required|numeric',
+                'heure_naissance' => 'required',
+                'poids_naissance' => 'nullable',
                 'lieu_accouchement' => 'required',
                 'numero_enregistrement' => 'required|unique:naissances,numero_enregistrement',
-                'date_dressage' => 'required|date',
-                'heure_dressage_heure' => 'nullable|integer|min:0|max:23',
-                'heure_dressage_minute'=> 'nullable|integer|min:0|max:59',
+                'date_dressage' => 'nullable',
+                'heure_dressage' => 'nullable',
+
 
 
                 // Étape 2
                 'lien_declarant' => 'required',
                 'preciser_lien' => 'nullable|string',
-                'numero' => 'required|numeric',
+                'numero' => 'required|string',
                 'nom_declarant' => 'required|string',
                 'prenom_declarant' => 'required|string',
                 'date_naissance_declarant' => 'required|date',
@@ -193,7 +189,7 @@ class NaissanceForm extends Component
                 'fokontany_mere' => 'required|string',
                 'profession_mere' => 'required|string',
                 'etat_civil_mere' => 'required|string',
-                'numero_mere' => 'required|numeric',
+                'numero_mere' => 'required|string',
 
                 // Étape 4
                 'nom_pere' => 'required|string',
@@ -208,23 +204,21 @@ class NaissanceForm extends Component
                 'pere_fokontany_residence' => 'required_if:pere_meme_residence_mere,false|string',
                 'profession_pere' => 'required|string',
                 'etat_civil_pere' => 'required|string',
-                'numero_pere' => 'required|numeric',
+                'numero_pere' => 'required|string',
         ]);
 
-            $heure_naissance = sprintf('%02d:%02d:00', $this->heure_naissance_heure, $this->heure_naissance_minute);
-            $heure_dressage = sprintf('%02d:%02d:00', $this->heure_dressage_heure ?? 0, $this->heure_dressage_minute ?? 0);
-
+            // Enregistrement des données dans la base de données
             Naissance::create([
                 'nom_enfant' => $this->nom_enfant,
                 'prenom_enfant' => $this->prenom_enfant,
                 'sexe' => $this->sexe,
                 'date_naissance' => $this->date_naissance,
-                'heure_naissance' => $heure_naissance,
+                'heure_naissance' => $this->heure_naissance,
                 'poids_naissance' => $this->poids_naissance,
                 'lieu_accouchement' => $this->lieu_accouchement,
                 'numero_enregistrement' => $this->numero_enregistrement,
                 'date_dressage' => $this->date_dressage,
-                'heure_dressage' => $heure_dressage,
+                'heure_dressage' => $this->heure_dressage,
 
                 // Déclarant
                 'lien_declarant' => $this->lien_declarant,
@@ -241,7 +235,7 @@ class NaissanceForm extends Component
                 'fokontany_residence' => $this->fokontany_residence,
                 'profession' => $this->profession,
 
-                // Mère
+                 // Mère
                 'nom_mere' => $this->nom_mere,
                 'prenom_mere' => $this->prenom_mere,
                 'date_naissance_mere' => $this->date_naissance_mere,
@@ -250,12 +244,35 @@ class NaissanceForm extends Component
                 'pays_mere' => $this->pays_mere,
                 'district_mere' => $this->district_mere,
                 'commune_mere' => $this->commune_mere,
+                'fokontany_mere' => $this->fokontany_mere,
+                'profession_mere' => $this->profession_mere,
+                'etat_civil_mere' => $this->etat_civil_mere,
+                'numero_mere' => $this->numero_mere,
+
+                // Père
+                'nom_pere' => $this->nom_pere,
+                'prenom_pere' => $this->prenom_pere,
+                'date_naissance_pere' => $this->date_naissance_pere,
+                'nationalite_pere' => $this->nationalite_pere,
+                'lieu_naissance_pere' => $this->lieu_naissance_pere,
+                'pere_meme_residence_mere' => $this->pere_meme_residence_mere,
+                'pere_pays_residence' => $this->pere_pays_residence,
+                'pere_district_residence' => $this->pere_district_residence,
+                'pere_commune_residence' => $this->pere_commune_residence,
+                'pere_fokontany_residence' => $this->pere_fokontany_residence,
+                'profession_pere' => $this->profession_pere,
+                'etat_civil_pere' => $this->etat_civil_pere,
+                'numero_pere' => $this->numero_pere,
+
             ]);
 
             // Logique pour enregistrer les données dans la base de données
 
             session()->flash('message', "Enregistrement réussi !");
-            $this->reset();
-            $this->step = 1;
+            $this->step = 5;
+        }
+        public function resetform(){
+             $this->reset();
+            $this->step = 5;
         }
 }
