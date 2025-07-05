@@ -21,8 +21,8 @@ class NaissanceForm extends Component
     public $heure_dressage;
 
     // Déclarant
-    public $lien_declarant;
-    public $preciser_lien;
+    public $lien_declarant = '';
+    public $preciser_lien = '';
     public $numero;
     public $nom_declarant;
     public $prenom_declarant;
